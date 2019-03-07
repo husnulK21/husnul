@@ -53,8 +53,8 @@
 
 			<div class="email-input-area">
 					<form method="post">
-						<input class="email-input" name="email" type="text" placeholder="Enter your email"/>
-						<button class="submit-btn" name="submit" type="submit"><b>NOTIFY US</b></button>
+						<input class="email-input" name="email" type="text" placeholder="Order your movies"/>
+						<button class="submit-btn" name="submit" type="submit"><b>Order US</b></button>
 					</form>
 				</div><!-- email-input-area -->
 				
