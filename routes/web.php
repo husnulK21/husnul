@@ -11,10 +11,25 @@
 |
 */
 
-Route::get('kategori/{id}', function ($id) {
-    return "hello user with id".$id;
+Route::get('kategori', function () {
+    return "hello user with id";
+});
+Route::resource('kategori', 'KategoriController')->except(['destroy']);
+Route::get('/lihatdata', 'crud@index')->name('lihatdata');
+
+Route::get('master', function () {
+    return view('layouts.master');
 });
 
-Route::resource('kategori','KategoriController')->except(['destroy']);
+Route::get('sidebar', function () {
+    return view('layouts.sidebar');
+});
 
+Route::get('dashboard', function () {
+    return view('dashboard.index');
+});
+
+Route::get('dashboard2', function () {
+    return view('dashboard.dashboard');
+});
 
