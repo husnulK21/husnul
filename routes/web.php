@@ -14,7 +14,7 @@
 Route::get('kategori', function () {
     return "hello user with id";
 });
-Route::resource('kategori', 'KategoriController')->except(['destroy']);
+Route::resource('category', 'KategoriController')->except(['destroy']);
 Route::get('/lihatdata', 'crud@index')->name('lihatdata');
 
 Route::get('master', function () {
@@ -32,4 +32,5 @@ Route::get('dashboard', function () {
 Route::get('dashboard2', function () {
     return view('dashboard.dashboard');
 });
+
 

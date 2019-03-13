@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\kategoriModel;
 
 class KategoriController extends Controller
@@ -12,12 +13,16 @@ class KategoriController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-
-    $kategori = KategoriModel::all();
-    return view('admin', compact('kategori'));
+        //mendenifisikan kata kuci
+        $cari = $request->cari;
+        //mencari data di database
+        $kategori = DB::table('kategori')
+		->where('nama_kategory','like',"%".$cari."%")
+		->paginate();
+        //return data ke view
+        return view('category.index',['kategori' => $kategori]);
     }
 
     /**
