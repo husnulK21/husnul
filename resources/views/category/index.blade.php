@@ -8,7 +8,6 @@
         Simple Tables
         <small>preview of simple tables</small>
       </h1>
-      <a href="kategori/tambah"> + Tambah Data</a>
 </center>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -23,7 +22,8 @@
         <div class="col-md-6">
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Daftar kategori Film</h3>
+              <h3 class="box-title">Daftar kategori Film</h3> 
+              <h4><a href="{{url('tambahdata')}}">Add data</a></h4>
             </div>
             <form action="#" method="get" class="sidebar-form">
         <div class="input-group">
@@ -44,13 +44,15 @@
   <th>Tanggal Input Data</th>
   <th>Opsi</th>
   </tr>
+  <?php $no=1 ?>
   @foreach($kategori as $kategori)
     <tr>
-      <td>{{$kategori->id}}</td>
+    <td> <center>{{$no++}} </center> </td>
       <td>{{$kategori->nama_kategory}}</td>
       <td>{{$kategori->slug}}</td>
       <td>{{$kategori->taggal_input_data}}</td>
-      <td><a href="">Lihat</a> | <a href="">Edit</a> | <a href="">Hapus</a></td>
+      <td><a href="editKategori/{{$kategori->id}}">Edit</a> | <a href="hapusKategori/{{$kategori->id}}" onClick="return confirm('Are you sure you want to delete?')
+									" class="btn default"><i class="fa fa-trash-o"></i> Hapus</a></td>
     </tr>
   @endforeach
 </table>

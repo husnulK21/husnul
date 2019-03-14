@@ -24,6 +24,13 @@ class KategoriController extends Controller
         //return data ke view
         return view('category.index',['kategori' => $kategori]);
     }
+    public function addform(){
+        return view('category.addform');
+    }
+    public function editform($id){
+        $data = DB::table('kategori')->where('id',$id)->get();
+		return view('category.editform', compact('data'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -33,6 +40,7 @@ class KategoriController extends Controller
     public function create()
     {
         //
+        return view('create');
     }
 
     /**
@@ -44,6 +52,13 @@ class KategoriController extends Controller
     public function store(Request $request)
     {
         //
+        DB::table('kategori')->insert([
+            'nama_kategory' => $request->kategori,
+            'slug' => $request->slug,
+            'taggal_input_data' => $request->tgl
+          ]);
+
+         return redirect('category');
     }
 
     /**
@@ -55,12 +70,7 @@ class KategoriController extends Controller
     public function show($id)
     {
         //
-        $output = 'Daftar Kategori';
-        $article = kategori::get();
-        return view('show', array(
-          'kategori' => $output,
-          'kategori' => $kategori
-        )); 
+    
     }
 
     /**
@@ -84,6 +94,12 @@ class KategoriController extends Controller
     public function update(Request $request, $id)
     {
         //
+        DB::table('kategori')->where('id',$id)->update([
+            'nama_kategory' => $request->kategori,
+            'slug' => $request->slug,
+            'taggal_input_data' => $request->tgl
+            ]);		
+            return redirect('category');
     }
 
     /**
@@ -95,5 +111,7 @@ class KategoriController extends Controller
     public function destroy($id)
     {
         //
+        DB::table('kategori')->where('id',$id)->delete();
+		return redirect('category');
     }
 }
